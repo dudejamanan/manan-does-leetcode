@@ -1,21 +1,31 @@
 class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
-        vector<int> nums3;
-        for(int i=0;i<nums1.size();i++){
-            int element = nums1[i];
-            bool found = false;
-            int nextGreater = -1;
-            for(int j=0;j<nums2.size();j++){
-                if (nums2[j] == element) found = true;
-                if (found && nums2[j] > element) {
-                    nextGreater = nums2[j];
+        int n = nums2.size();
+        vector<int> nextGreater(n,-1);
+        stack<int> st;
+        
+        for(int i=n-1;i>=0;i--){
+            while(!st.empty() && st.top()<=nums2[i]){
+                
+                st.pop();
+            }
+            if (!st.empty()){
+                nextGreater[i]=st.top();
+            }
+
+            st.push(nums2[i]);
+        }
+
+        vector<int> result;
+        for(int x:nums1){
+            for(int i=0;i<n;i++){
+                if(nums2[i]==x){
+                    result.push_back(nextGreater[i]);
                     break;
                 }
             }
-            nums3.push_back(nextGreater);
-
         }
-        return nums3;
+        return result;
     }
 };
