@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        unordered_map <char,int> freq_s;
+        for(char c: s){
+            freq_s[c]++;
+        }
+        unordered_map <char,int> freq_t;
+        for(char c: t){
+            freq_t[c]++;
+        }
+       
+
+        return freq_s==freq_t;
+        
+    }
+};
