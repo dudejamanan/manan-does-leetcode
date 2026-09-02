@@ -10,7 +10,6 @@ public:
         for(char c: magazine){
             freq_m[c]++;
         }
-        bool x = true;
         for(char c: ransomNote){
             if(freq_m[c]<freq_r[c]){
                 return false;
