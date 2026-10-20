@@ -9,7 +9,7 @@ public:
                 slow++;
                 fast++;
             }
-            else if(nums[fast!=0] && nums[slow]!=0){
+            else if(nums[slow]!=0){
                 slow++;
                 fast++;
             }
